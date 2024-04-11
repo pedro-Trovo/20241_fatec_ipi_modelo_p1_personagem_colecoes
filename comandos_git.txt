@@ -5,8 +5,12 @@
 5-git commit -m "docs(p1):inclui arquivo README.md": Torna permanente as alterações 
 6--git add comandos_git.txt: adiciona o arquivo para execução do commit
 7-git commit -m "docs(p1):cria arquivo para comandos git": Torna permanente as alterações 
-8-git add Personagem.java
-9-git commit -m "feat(p1):viabiliza morte do personagem"
-10-git tag -a v1.0.0 -m "jogo:torna a morte do personagem real"
-11-git add JogoV1.java
-12-git commit -m "test(p1): testa a morte do personagem"
+8-git add Personagem.java:adiciona o arquivo para execução do commit
+9-git commit -m "feat(p1):viabiliza morte do personagem":Torna permanente as alterações 
+10-git tag -a v1.0.0 -m "jogo:torna a morte do personagem real": adiciona uma tag no commit
+11-git add JogoV1.java:adiciona o arquivo para execução do commit
+12-git commit -m "test(p1): testa a morte do personagem":Torna permanente as alterações 
+13-git add comandos_git.txt:adiciona o arquivo para execução do commit
+14-git commit -m "docs(p1):adiciona novos comandos":Torna permanente as alterações
+15-git add comandos_git.txt:adiciona o arquivo para execução do commit
+16-git commit -m "docs(p1):adiciona novos comandos":Torna permanente as alterações
