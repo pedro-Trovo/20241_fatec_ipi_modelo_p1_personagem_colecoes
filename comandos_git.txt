@@ -1,0 +1,5 @@
+1-git clone https://github.com/pedro-Trovo/20241_fatec_ipi_modelo_p1_personagem_colecoes: Clona um repositório para uma máquina local
+2-git config --local user.name "Pedro Trovo": Configurar nome do autor
+3-git config --local user.email trovopedro5@gmail.com: Configurar email do autor
+4-git add README.md: adiciona o arquivo para execução do commit
+5-git commit -m "docs(p1):inclui arquivo README.md": Torna permanente as alterações 
