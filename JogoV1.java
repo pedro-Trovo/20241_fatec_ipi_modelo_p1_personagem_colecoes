@@ -2,9 +2,11 @@ import java.util.Random;
  
 public class JogoV1 {
     public static void main(String[] args) throws Exception{
-        var jogadorUm = new Personagem(10,10,10);
-        var jogadorDois = new Personagem(10,10,10);
+        var jogadorUm = new Personagem();
+        var jogadorDois = new Personagem(10, 5, 2, 16, "Pirarucu", "Pato no tucupi", "Pe de moleque", "Tucunare");
         var gerador = new Random();
+
+        Personagem vencedor, perdedor;
 
         int rodada = 1;
  
@@ -38,7 +40,7 @@ public class JogoV1 {
 
 
             System.out.println("\n\n\n");
-            Thread.sleep(1500);
+            Thread.sleep(600);
 
 
 
@@ -63,7 +65,7 @@ public class JogoV1 {
 
 
 
-            Thread.sleep(1000);
+            Thread.sleep(800);
             System.out.println("\n\n\n\n");
 
 
@@ -91,7 +93,7 @@ public class JogoV1 {
             System.out.println("\n\n\n\n\n");
 
 
-            Thread.sleep(1200);
+            Thread.sleep(3000);
 
             rodada++;
         }
@@ -102,90 +104,59 @@ public class JogoV1 {
 
         if(jogadorUm.estarSemEnergia() && jogadorDois.estarSemEnergia()){
             System.out.printf("\t\tINFELIZMENTE AMBOS OS JOGADORES MORRERAM\n\n\n\n\n");
+            return;
         }
 
-        else if(jogadorUm.estarSemEnergia()){
-            System.out.printf("\t\t>>>> %s morreu de fadiga <<<<\n\n\n", jogadorUm.nome);
-            System.out.printf("\t\tO GRANDE CAMPEAO EH %s\n\n", jogadorDois.nome);
-            System.out.println("\n\n\n");
-            
-
-            while(!jogadorDois.estarSemEnergia()){
-                System.out.printf("\n\n------------------------------------------------------------------------------\n\n");
-                System.out.printf(">->-> RODADA #%d <-<-<\n\n\n", rodada);
-
-
-                int oQueFazer = gerador.nextInt(3);
-                System.out.println("Acao do Jogador Dois: ");
-                oQueFazer = gerador.nextInt(3);
-                switch(oQueFazer){
-                    case 0:
-                        jogadorDois.comer();
-                        break;
-    
-                    case 1:
-                        jogadorDois.dormir();
-                        break;
-    
-                    case 2:
-                        jogadorDois.cacar();
-                        break;
-                }
-                
-                System.out.println("\nStatus do Jogador Dois: ");
-                System.out.println(jogadorDois);
-
-                Thread.sleep(1000);
-
-                rodada++;
-            }
-
-            System.out.printf("\n\n\n>>>> %s morreu de fadiga <<<<\n\n\n", jogadorDois.nome);
+        else if(!jogadorUm.estarSemEnergia()){
+            vencedor = jogadorUm;
+            perdedor = jogadorDois;
         }
+        else{
+            vencedor = jogadorDois;
+            perdedor = jogadorUm;
+        }
+
+
+        System.out.printf("\t\t>>>> %s morreu de fadiga <<<<\n\n\n", perdedor.nome);
+        System.out.printf("\t\tO GRANDE CAMPEAO EH %s\n\n", vencedor.nome);
+        System.out.println("\n\n\n");
         
-        else if(jogadorDois.estarSemEnergia()){
-            System.out.printf("\t\t>>>> %s morreu de fadiga <<<<\n\n\n", jogadorDois.nome);
-            System.out.printf("\t\tO GRANDE CAMPEAO EH %s\n\n", jogadorUm.nome);
-            System.out.println("\n\n\n");
 
-            
-
-            while(!jogadorUm.estarSemEnergia()){
-                System.out.printf("\n\n------------------------------------------------------------------------------\n\n");
-                System.out.printf(">->-> RODADA #%d <-<-<\n\n\n", rodada);
+        while(!vencedor.estarSemEnergia()){
+            System.out.printf("\n\n------------------------------------------------------------------------------\n\n");
+            System.out.printf(">->-> RODADA #%d <-<-<\n\n\n", rodada);
 
 
-                int oQueFazer = gerador.nextInt(3);
-                System.out.println("Acao do Jogador Um: ");
-                oQueFazer = gerador.nextInt(3);
-                switch(oQueFazer){
-                    case 0:
-                        jogadorUm.comer();
-                        break;
-    
-                    case 1:
-                        jogadorUm.dormir();
-                        break;
-    
-                    case 2:
-                        jogadorUm.cacar();
-                        break;
-                }
-                
-                System.out.println("\nStatus do Jogador Um: ");
-                System.out.println(jogadorUm);
+            int oQueFazer = gerador.nextInt(3);
+            System.out.println("Acao do Jogador Vencedor: ");
+            oQueFazer = gerador.nextInt(3);
+            switch(oQueFazer){
+                case 0:
+                    vencedor.comer();
+                    break;
 
-                Thread.sleep(1000);
+                case 1:
+                    vencedor.dormir();
+                    break;
 
-                rodada++;
+                case 2:
+                    vencedor.cacar();
+                    break;
             }
+            
+            System.out.println("\nStatus do Jogador Vencedor: ");
+            System.out.println(vencedor);
 
-            System.out.printf("\n\n\n>>>> %s morreu de fadiga <<<<\n\n\n", jogadorUm.nome);
+            Thread.sleep(1500);
+
+            rodada++;
         }
 
+        System.out.printf("\n\n\n\n\n\n\t\t>>>> %s morreu de fadiga <<<<\n\n\n", vencedor.nome);
 
 
-        System.out.printf("\n\n\n\n--- --- --- --- Fim de Jogo. Todo mundo morreu! --- --- --- ---\n\n\n\n");
+
+        System.out.printf("\n\n\n\n\n--- --- --- Fim de Jogo. Todo mundo morreu! Total de rodadas: %d --- --- ---\n\n\n\n", rodada-1);
     }
 }
  
