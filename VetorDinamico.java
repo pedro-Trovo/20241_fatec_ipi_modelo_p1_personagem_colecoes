@@ -69,7 +69,6 @@ public class VetorDinamico {
     if(!existe(e)) adicionar(e);
   }
 
-
   boolean existe(String e){
     for (int i = 0; i < qtde; i++)
       if (e == elementos[i])
@@ -87,21 +86,28 @@ public class VetorDinamico {
 
 
 
-  // void removerNoFinal(){
+  void removerNoFinal(){
+    qtde -= 1;
+  }
 
-  // }
+  boolean estaVazio(){
+    return qtde == 0;
+  }
 
-  // boolean estaVazio(){
+  boolean estaUmQuartoCheio(){
+    return qtde == (cap / 4);
+  }
 
-  // }
+  void reduzirTamanho(){
+    if(!estaVazio()){
+      removerNoFinal();
 
-  // boolean estaUmQuartoCheio(){
-    
-  // }
+      if(cap>4 && estaUmQuartoCheio()){
+        cap /= 2;
+      }
+    } 
+  }
 
-  // void reduzirTamanho(){
-
-  // }
 
 
 

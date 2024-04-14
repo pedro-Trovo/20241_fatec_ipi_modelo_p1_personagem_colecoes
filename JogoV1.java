@@ -29,7 +29,7 @@ public class JogoV1 {
             System.out.println(jogadorUm);
             System.out.println("\n\n\n\n\n\n\n");
  
-            Thread.sleep(1000);
+            Thread.sleep(5000);
         }    
        
         if(jogadorUm.estarSemEnergia()){

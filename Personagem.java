@@ -84,9 +84,16 @@ public class Personagem{
           System.out.printf("%s sem fome....\n", nome);
           break;
         default:
-          System.out.printf("%s comendo...\n", nome);
-          --fome;
-          energia = (energia == 10 ? energia : energia + 1);
+          if(!inventarioItems.estaVazio()){
+            System.out.printf("%s comendo...\n", nome);
+            --fome;
+            energia = (energia == 10 ? energia : energia + 1);
+          }
+          else{
+            System.out.printf("AVISO: %s esta sem comida!!!\n", nome);
+          }
+
+          inventarioItems.reduzirTamanho();
       }
   }
 
