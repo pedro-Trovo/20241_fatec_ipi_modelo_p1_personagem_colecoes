@@ -114,6 +114,17 @@ public class Personagem{
   }
 
 
+
+
+
+
+
+  int atacar(int energia){
+    return energia -= 1;
+  }
+
+
+
   
 
 
