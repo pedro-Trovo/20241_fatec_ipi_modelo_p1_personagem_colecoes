@@ -6,8 +6,7 @@ public class Personagem{
   int energia;
   private int fome;
   private int sono;
-  VetorDinamico inventarioItems = new VetorDinamico();
-
+  VetorDinamico inventarioItems;
 
 
   Personagem(){
@@ -15,15 +14,19 @@ public class Personagem{
     energia = 10;
     fome = 0;
     sono = 0;
+
+    inventarioItems = new VetorDinamico();
   }
 
-  Personagem(int energia, int fome, int sono){
+  Personagem(int energia, int fome, int sono, int capMinimaJogador, String item1, String item2, String item3, String item4){
     if (energia >= 0 && energia <= 10)
       this.energia = energia;
     if (fome >= 0 && fome <= 10)
       this.fome = fome;
     if (sono >= 0 && sono <= 10)
       this.sono = sono;
+    
+    inventarioItems = new VetorDinamico(capMinimaJogador, item1, item2, item3, item4);
   }
 
 
@@ -59,7 +62,7 @@ public class Personagem{
         break;
 
       case 3:
-        inventarioItems.adicionar("Laranja");
+        inventarioItems.adicionar("Barreado");
         break;
 
       case 4:

@@ -15,23 +15,23 @@ public class VetorDinamico {
     elementos[0] = "Javali selvagem";
     elementos[1] = "Amora";
     elementos[2] = "Batata frita";
-    elementos[3] = "Laranja";
+    elementos[3] = "Barreado";
   }
 
-  VetorDinamico(int capMinima){
-    double aux = capMinima;
+  VetorDinamico(int capMinimaJogador, String item1, String item2, String item3, String item4){
+    double aux = capMinimaJogador;
     while (aux >= 2)
       aux /= 2;
-    cap = aux == 1 && capMinima > 3 ? capMinima : CAP_MINIMA;
+    cap = aux == 1 && capMinimaJogador > 3 ? capMinimaJogador : CAP_MINIMA;
 
     qtde = 4;
 
     elementos = new String[cap];
 
-    elementos[0] = "Javali selvagem";
-    elementos[1] = "Amora";
-    elementos[2] = "Batata frita";
-    elementos[3] = "Laranja";
+    elementos[0] = item1;
+    elementos[1] = item2;
+    elementos[2] = item3;
+    elementos[3] = item4;
   }
 
 
