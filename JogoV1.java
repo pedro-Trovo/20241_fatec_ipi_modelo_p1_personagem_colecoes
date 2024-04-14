@@ -6,13 +6,13 @@ public class JogoV1 {
         var gerador = new Random();
  
         jogadorUm.nome = "Danilo";
- 
+        
+        System.out.println("\n\n\n\nJoguinho de Sobrevivencia\n\n");
         while(!jogadorUm.estarSemEnergia()){
+            System.out.println("Acao do Jogador: ");
             int oQueFazer = gerador.nextInt(3);
-           
             switch(oQueFazer){
                 case 0:
-                default:
                     jogadorUm.comer();
                     break;
  
@@ -24,12 +24,16 @@ public class JogoV1 {
                     jogadorUm.cacar();
                     break;
             }
+
+            System.out.println("\nStatus do Jogador: ");
+            System.out.println(jogadorUm);
+            System.out.println("\n\n\n\n\n\n\n");
  
-            Thread.sleep(700);
+            Thread.sleep(1000);
         }    
        
         if(jogadorUm.estarSemEnergia()){
-            System.out.printf("%s morreu de fadiga", jogadorUm.nome);
+            System.out.printf(">>>> %s morreu de fadiga <<<<\n\n\n", jogadorUm.nome);
         }
     }
 }

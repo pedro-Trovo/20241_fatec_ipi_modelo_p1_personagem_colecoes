@@ -1,16 +1,21 @@
 import java.util.Arrays;
 
 public class VetorDinamico {
-  //variáveis de instância (cada instância ou objeto tem a sua cópia)
   private int qtde;
   private int cap;
-  private int [] elementos;
-  //variável de classe (todas as instâncias compartilham este mesmo valor)
+  private String [] elementos;
   private static final int CAP_MINIMA = 4;
+
+
   VetorDinamico(){
     cap = CAP_MINIMA;
-    qtde = 0;
-    elementos = new int[CAP_MINIMA];
+    qtde = 4;
+    elementos = new String[CAP_MINIMA];
+
+    elementos[0] = "Javali selvagem";
+    elementos[1] = "Amora";
+    elementos[2] = "Batata frita";
+    elementos[3] = "Laranja";
   }
 
   VetorDinamico(int capMinima){
@@ -18,48 +23,54 @@ public class VetorDinamico {
     while (aux >= 2)
       aux /= 2;
     cap = aux == 1 && capMinima > 3 ? capMinima : CAP_MINIMA;
+
+    qtde = 4;
+
+    elementos = new String[cap];
+
+    elementos[0] = "Javali selvagem";
+    elementos[1] = "Amora";
+    elementos[2] = "Batata frita";
+    elementos[3] = "Laranja";
   }
 
-  //terminar esse método
-  void adicionar(int elemento){
-    //se estiver cheio, redimensionar antes de adicionar
+
+
+
+
+  void adicionar(String elemento){
     if(estaCheio())redimensionar();
     elementos[qtde] = elemento;
     qtde++;
   }
 
-  //escrever esse aqui também
+
   boolean estaCheio(){
-    //decidir se o vetor está cheio ou não olhando para cap e qtde
-    // if(qtde == cap)
-    //   return true;
-    // return false;
-    // return qtde == cap ? true : false;
     return qtde == cap;
   }
 
-  //escrever esse método
+
   private void redimensionar(){
-    //alocar um vetor com o dobro da capacidade atual chamado auxiliar
-    int [] aux = new int[cap * 2];
-    //copiar todo mundo do vetor elementos para o vetor auxiliar
+    String [] aux = new String[cap * 2];
     for(int i = 0; i < cap; i++){
       aux[i] = elementos[i];
     }
-    //ajustar a capacidade para que ela tenha o valor novo, dobrado
     cap *= 2;
 
-    //ajustar o ponteiro elementos para que ele aponte para o novo vetor
     elementos = aux;
-    // System.gc();
   }
 
-  //implemente esse método
-  void adicionarSemRepeticao(int e){
+  
+
+
+
+
+  void adicionarSemRepeticao(String e){
     if(!existe(e)) adicionar(e);
   }
 
-  boolean existe(int e){
+
+  boolean existe(String e){
     for (int i = 0; i < qtde; i++)
       if (e == elementos[i])
         return true;
@@ -70,26 +81,41 @@ public class VetorDinamico {
     return qtde;
   }
 
-  void removerNoFinal(){
 
-  }
 
-  boolean estaVazio(){
 
-  }
 
-  boolean estaUmQuartoCheio(){
+
+
+  // void removerNoFinal(){
+
+  // }
+
+  // boolean estaVazio(){
+
+  // }
+
+  // boolean estaUmQuartoCheio(){
     
-  }
+  // }
 
-  void reduzirTamanho(){
+  // void reduzirTamanho(){
 
-  }
+  // }
 
-  int [] getElementos(){
+
+
+
+
+
+  String [] getElementos(){
     return Arrays.copyOf(elementos, cap);
-    // return elementos;
   }
+
+
+
+
+
 
   public String toString(){
     StringBuilder sb = new StringBuilder("");
